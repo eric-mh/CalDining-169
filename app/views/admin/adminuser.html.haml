@@ -1,10 +1,16 @@
-%h1 Admin users
-- @admin.each do |admin|
+.container
+  .navbar.clear
+    = render 'shared/navbar'
+  .header "ADMIN USER PAGE"? NEEDS A BETTER NAME
+.container-big.clear  
+.container
+  .header Admin users
+  - @admin.each do |admin|
     =admin.email
-    =button_to 'Make regular user', update_path(admin.id), method: :put
+    =button_to 'Make ' + admin.email + ' a regular user', update_path(admin.id), method: :put
     %br
-%br
-%h1 Non Admin users
-- @nonadmin.each do |nonadmin|
+  %br
+  .header Non Admin users
+  - @nonadmin.each do |nonadmin|
     =nonadmin.email
-    =button_to 'Make Admin', update_path(nonadmin.id), method: :put 
+    =button_to 'Make ' + nonadmin.email + ' an Admin', update_path(nonadmin.id), method: :put 

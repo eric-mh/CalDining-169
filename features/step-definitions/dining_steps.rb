@@ -141,6 +141,14 @@ Then (/^I upload a malformed image$/) do
   pending
 end
 
+# # # # # # # Merge problems? (Admin2) # # # # # # #
 
-
-
+And (/^I am signed in as admin$/) do
+  visit "/users/sign_in"
+  email = 'ranit@dubey.com'
+  password = 'ranitdubey'
+  fill_in('Email', :with => email)
+  fill_in('Password', :with => password)
+  click_button 'Log in'
+  page.should have_content('ranit@dubey.com')
+end
